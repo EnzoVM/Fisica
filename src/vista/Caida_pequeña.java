@@ -1,12 +1,13 @@
 
 package vista;
 
+import Controlador.FondoPanel;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import Hilos.*;
-import java.awt.Color;
-import java.awt.Graphics;
-import javax.swing.JPanel;
+import java.awt.Toolkit;
+import javax.swing.JOptionPane;
+
 import javax.swing.table.DefaultTableModel;
 import modelo.Caida_libre;
 
@@ -16,12 +17,13 @@ public class Caida_pequeña extends javax.swing.JDialog {
     Caida_libre c = null;
     FondoPanel fondo = new FondoPanel();
             
-    public Caida_pequeña(java.awt.Frame parent, boolean modal) {
+    public Caida_pequeña(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
         nombre.setText(nom);
         imagen1();
-        
+        tiempo.setText("");
+        velocidad.setText("");
     }
        
     void llena_tabla(){
@@ -82,6 +84,7 @@ public class Caida_pequeña extends javax.swing.JDialog {
         tabla1 = new javax.swing.JTable();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        btnLimpiar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -162,7 +165,19 @@ public class Caida_pequeña extends javax.swing.JDialog {
 
         jLabel6.setText("Ingrese la gravedad ");
 
+        txtGravedad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtGravedadKeyTyped(evt);
+            }
+        });
+
         jLabel3.setText("Ingrese la altura donde se desee hacer la demostracion:");
+
+        txtAltura.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtAlturaKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -202,11 +217,21 @@ public class Caida_pequeña extends javax.swing.JDialog {
                 "TIEMPO (s)", "VELOCIDAD (m/s)"
             }
         ));
+        tabla1.getTableHeader().setResizingAllowed(false);
+        tabla1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tabla1);
 
         jLabel7.setText("Velocidad por cada segundo de trayectoria hasta abrir el ");
 
         jLabel8.setText("paracaidas:");
+
+        btnLimpiar.setText("LImpiar");
+        btnLimpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -235,8 +260,10 @@ public class Caida_pequeña extends javax.swing.JDialog {
                             .addComponent(jLabel7))
                         .addGap(21, 21, 21))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(129, 129, 129)
+                        .addGap(75, 75, 75)
                         .addComponent(btnIniciar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnLimpiar)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -246,11 +273,8 @@ public class Caida_pequeña extends javax.swing.JDialog {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, 601, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, 601, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(14, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(nombre))
@@ -264,22 +288,64 @@ public class Caida_pequeña extends javax.swing.JDialog {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnIniciar)
-                        .addGap(37, 37, 37))))
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnIniciar)
+                            .addComponent(btnLimpiar))))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
-        caida.setLocation(150, 0);
-        h = new HiloPequeño(this, caida);
-        h.start();
-        
-        llena_tabla();
-        resultados();
+        int num= Integer.parseInt(txtAltura.getText());
+        if(!txtAltura.getText().equals("") && !txtGravedad.getText().equals("")){
+            if(num<=500 && num>=300){
+                caida.setLocation(150, 0);
+                h = new HiloPequeño(this, caida);
+                h.start();
+
+                llena_tabla();
+                resultados();
+            }else{
+                JOptionPane.showMessageDialog(null, "Ingrese una altura entre 500 y 300 metros", "Advertencia", JOptionPane.ERROR_MESSAGE);
+            }          
+        }else{
+            JOptionPane.showMessageDialog(null, "Ingrese los datos requeridos", "Advertencia", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnIniciarActionPerformed
+
+    private void txtAlturaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAlturaKeyTyped
+        int altura = evt.getKeyChar();
+        if(Character.isSpaceChar(altura)){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+        }else if(Character.isLetter(altura)){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+        }
+    }//GEN-LAST:event_txtAlturaKeyTyped
+
+    private void txtGravedadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtGravedadKeyTyped
+        int gravedad = evt.getKeyChar();
+        if(Character.isSpaceChar(gravedad)){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+        }else if(Character.isLetter(gravedad)){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+        }
+    }//GEN-LAST:event_txtGravedadKeyTyped
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        txtAltura.setText("");
+        txtGravedad.setText("");
+        tiempo.setText("");
+        velocidad.setText("");
+        DefaultTableModel dt = (DefaultTableModel)tabla1.getModel();
+        dt.setRowCount(0);
+    }//GEN-LAST:event_btnLimpiarActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -308,7 +374,7 @@ public class Caida_pequeña extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Caida_pequeña dialog = new Caida_pequeña(new javax.swing.JFrame(), true);
+                Caida_pequeña dialog = new Caida_pequeña(new javax.swing.JDialog(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -322,6 +388,7 @@ public class Caida_pequeña extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIniciar;
+    private javax.swing.JButton btnLimpiar;
     private javax.swing.JLabel caida;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -367,15 +434,4 @@ public class Caida_pequeña extends javax.swing.JDialog {
         this.caida = caida;
     }
     
-    class FondoPanel extends JPanel{
-        private Image fondo;
-        
-        @Override
-        public void paint(Graphics g){
-            fondo= new ImageIcon(getClass().getResource("/imagen/fondo.jpg")).getImage();
-            g.drawImage(fondo, 0, 0, getWidth(), getHeight(), this);
-            setOpaque(false);
-            super.paint(g);
-        }
-    }
 }

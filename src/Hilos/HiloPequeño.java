@@ -47,7 +47,7 @@ public class HiloPequeño extends Thread {
         //animacion de caida pequeña
         try{
             while (opcion1) { 
-                sleep(500);
+                sleep(100);
                 tiempo++;
                 ac= cp.getCaida().getLocation().y;
                 imagen.setLocation(150, ac + ((int)posicion(ac, Double.parseDouble(cp.getTxtGravedad().getText()), tiempo))/1000);

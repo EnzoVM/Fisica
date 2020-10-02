@@ -1,6 +1,9 @@
 
 package vista;
 
+import java.awt.Toolkit;
+import javax.swing.JOptionPane;
+
 public class pagInicial extends javax.swing.JFrame {
 
     public pagInicial() {
@@ -14,129 +17,129 @@ public class pagInicial extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        btnPequeño = new javax.swing.JButton();
-        btnGrande = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        btnParacaidas = new javax.swing.JButton();
+        btnCaida = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Aplicacion para hallar la velocidad y tiempo para abrir un paracaidas ");
+        jLabel1.setText("APLICACION PARA HALLAR LA VELOCIDAD Y EL TIEMPO EN CAIDA LIBRE");
 
         jLabel2.setText("Ingrese su nombre: ");
 
-        jLabel3.setText("Elija el tipo de caida");
-
-        btnPequeño.setText("Caida Pequeña");
-        btnPequeño.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPequeñoActionPerformed(evt);
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreKeyTyped(evt);
             }
         });
 
-        btnGrande.setText("Caida Grande");
-        btnGrande.addActionListener(new java.awt.event.ActionListener() {
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipos"));
+
+        btnParacaidas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/personita_paracaidas.png"))); // NOI18N
+        btnParacaidas.setText("Paracadismo");
+        btnParacaidas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnParacaidas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrandeActionPerformed(evt);
+                btnParacaidasActionPerformed(evt);
             }
         });
 
-        jLabel4.setText("Altura minima: 300 metros");
+        btnCaida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/personita_cayendo.png"))); // NOI18N
+        btnCaida.setText("Caida de un objeto");
+        btnCaida.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCaida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCaidaActionPerformed(evt);
+            }
+        });
 
-        jLabel5.setText("Altura maxima: 500 metros");
-
-        jLabel6.setText("Altura minima: 4000 metros");
-
-        jLabel7.setText("Altura maxima: 6000 metros");
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(15, Short.MAX_VALUE)
+                .addComponent(btnParacaidas)
+                .addGap(18, 18, 18)
+                .addComponent(btnCaida)
+                .addGap(17, 17, 17))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnParacaidas)
+                    .addComponent(btnCaida))
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(8, 8, 8))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(22, 22, 22)
-                                        .addComponent(btnPequeño))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(10, 10, 10)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel5)
-                                            .addComponent(jLabel4))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(20, 20, 20)
-                                        .addComponent(btnGrande))
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel7)))))
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(jLabel1)))
-                .addContainerGap(44, Short.MAX_VALUE))
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(31, 31, 31)))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(27, 27, 27)
                 .addComponent(jLabel1)
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(28, 28, 28)
-                .addComponent(jLabel3)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnPequeño)
-                    .addComponent(btnGrande))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel5))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel7)))
-                .addContainerGap(34, Short.MAX_VALUE))
+                    .addComponent(jLabel2)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
+        char nombre = evt.getKeyChar();
+        if(Character.isSpaceChar(nombre)){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+        }else if(!Character.isLetter(nombre)){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+        }
+    }//GEN-LAST:event_txtNombreKeyTyped
 
-    private void btnPequeñoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPequeñoActionPerformed
-        Caida_pequeña.nom= txtNombre.getText();
-        Caida_pequeña p = new Caida_pequeña(this, true);
-        p.setLocationRelativeTo(null);
-        p.setVisible(true);
-    }//GEN-LAST:event_btnPequeñoActionPerformed
+    private void btnParacaidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnParacaidasActionPerformed
+        if(txtNombre.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"Ingrese un nombre para continuar", "Error", JOptionPane.ERROR_MESSAGE);
+        }else{
+            pag_Paracaidismo.nom=txtNombre.getText();
+            pag_Paracaidismo para = new pag_Paracaidismo(this, true);
+            para.setLocationRelativeTo(null);
+            para.setVisible(true);
+        }  
+    }//GEN-LAST:event_btnParacaidasActionPerformed
 
-    private void btnGrandeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrandeActionPerformed
-        Caida_grande.nom= txtNombre.getText();
-        Caida_grande g = new Caida_grande(this, true);
-        g.setLocationRelativeTo(null);
-        g.setVisible(true);
-    }//GEN-LAST:event_btnGrandeActionPerformed
+    private void btnCaidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaidaActionPerformed
+        if(txtNombre.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"Ingrese un nombre para continuar", "Error", JOptionPane.ERROR_MESSAGE);
+        }else{
+            Caida_Objeto.nom=txtNombre.getText();
+            Caida_Objeto co = new Caida_Objeto(this, true);
+            co.setLocationRelativeTo(null);
+            co.setVisible(true);
+        }
+    }//GEN-LAST:event_btnCaidaActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -171,15 +174,11 @@ public class pagInicial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnGrande;
-    private javax.swing.JButton btnPequeño;
+    private javax.swing.JButton btnCaida;
+    private javax.swing.JButton btnParacaidas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }
