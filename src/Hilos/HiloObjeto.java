@@ -6,19 +6,12 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import vista.Caida_Objeto;
 
-public class HiloObjeto extends Thread{
+public class HiloObjeto extends HiloPrincipal{
     private Caida_Objeto co;
-    private JLabel imagen;
-    boolean opcion=true;
-    boolean opcion1=true;
 
-    public HiloObjeto(Caida_Objeto co, JLabel imagen) {
+    public HiloObjeto(JLabel imagen, Caida_Objeto co) {
+        super(imagen);
         this.co = co;
-        this.imagen = imagen;
-    }
-    
-    public double posicion(int y, double g, int t){
-        return y+(g*t*t)/2;
     }
     
     @Override
@@ -28,17 +21,21 @@ public class HiloObjeto extends Thread{
         int tiempo=0;
         //animacion de caida pequeña
         try{
-            while (opcion) { 
+            while (super.isOpcion()) { 
                 sleep(10);
                 tiempo++;
                 ap= co.getCaida().getLocation().y;
-                imagen.setLocation(150, ap + ((int)posicion(ap, Double.parseDouble(co.getTxtGravedad().getText()), tiempo))/1000);
+                super.getImagen().setLocation(150, ap + ((int)posicion(ap, Double.parseDouble(co.getTxtGravedad().getText()), tiempo))/1000);
                 co.repaint();
                 if(ap>=520){
-                   opcion=false;                  
+                   super.setOpcion(false);
                    JOptionPane.showMessageDialog(null, "Ha Finalizado la simulación");
                 }
             }
         }catch(Exception e){}
     }
+
+    @Override
+    public void run2(int tiempo) {}
+    
 }

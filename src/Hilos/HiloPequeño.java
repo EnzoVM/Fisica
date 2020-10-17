@@ -4,21 +4,14 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import vista.*;
 
-public class HiloPequeño extends Thread {
+public class HiloPequeño extends HiloPrincipal {
     private Caida_pequeña cp;
-    private JLabel imagen;
-    boolean opcion=true;
-    boolean opcion1=true;
 
-    public HiloPequeño(Caida_pequeña cp, JLabel imagen) {
+    public HiloPequeño(JLabel imagen, Caida_pequeña cp) {
+        super(imagen);
         this.cp = cp;
-        this.imagen = imagen;
     }
-    
-    public double posicion(int y, double g, int t){
-        return y+(g*t*t)/2;
-    }
-    
+   
     @Override
     public void run(){
         cp.imagen1();
@@ -26,14 +19,14 @@ public class HiloPequeño extends Thread {
         int tiempo=0;
         //animacion de caida pequeña
         try{
-            while (opcion) { 
+            while (super.isOpcion()) { 
                 sleep(15);
                 tiempo++;
                 ap= cp.getCaida().getLocation().y;
-                imagen.setLocation(150, ap + ((int)posicion(ap, Double.parseDouble(cp.getTxtGravedad().getText()), tiempo))/1000);
+                super.getImagen().setLocation(150, ap + ((int)posicion(ap, Double.parseDouble(cp.getTxtGravedad().getText()), tiempo))/1000);
                 cp.repaint();
                 if(ap>=400){
-                   opcion=false;
+                   super.setOpcion(false);
                    cp.imagen2();
                    JOptionPane.showMessageDialog(null, "Se ha hallado la velocidad y el tiempo en este punto");
                    run2(tiempo);
@@ -46,14 +39,14 @@ public class HiloPequeño extends Thread {
         int ac=0;
         //animacion de caida pequeña
         try{
-            while (opcion1) { 
-                sleep(100);
+            while (super.isOpcion1()) { 
+                sleep(80);
                 tiempo++;
                 ac= cp.getCaida().getLocation().y;
-                imagen.setLocation(150, ac + ((int)posicion(ac, Double.parseDouble(cp.getTxtGravedad().getText()), tiempo))/1000);
+                super.getImagen().setLocation(150, ac + ((int)posicion(ac, Double.parseDouble(cp.getTxtGravedad().getText()), tiempo))/1000);
                 cp.repaint();
                 if(ac>=520){
-                   opcion1=false;
+                   super.setOpcion1(false);
                 }
             }
         }catch(Exception e){}

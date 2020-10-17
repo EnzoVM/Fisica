@@ -30,6 +30,7 @@ public class pag_Paracaidismo extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel1.setText("PARACAIDISMO");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Salto Pequeño"));
@@ -38,6 +39,7 @@ public class pag_Paracaidismo extends javax.swing.JDialog {
 
         jLabel4.setText("Altura maxima: 500 metros");
 
+        btnPequeño.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnPequeño.setText("Ingresar");
         btnPequeño.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnPequeño.addActionListener(new java.awt.event.ActionListener() {
@@ -55,22 +57,21 @@ public class pag_Paracaidismo extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(jLabel3))
-                .addGap(32, 32, 32)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnPequeño, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(24, 24, 24))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(12, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel4)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnPequeño)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel4)))
                 .addGap(33, 33, 33))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(btnPequeño)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Salto Grande"));
@@ -79,6 +80,7 @@ public class pag_Paracaidismo extends javax.swing.JDialog {
 
         jLabel6.setText("Altura maxima: 5000 metros");
 
+        btnGrande.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnGrande.setText("Ingresar");
         btnGrande.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnGrande.addActionListener(new java.awt.event.ActionListener() {
@@ -127,7 +129,7 @@ public class pag_Paracaidismo extends javax.swing.JDialog {
                             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(144, 144, 144)
+                        .addGap(131, 131, 131)
                         .addComponent(jLabel1)))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
@@ -140,7 +142,7 @@ public class pag_Paracaidismo extends javax.swing.JDialog {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();

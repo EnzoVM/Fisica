@@ -12,7 +12,7 @@ import modelo.Caida_libre;
 
 public class Caida_grande extends javax.swing.JDialog {
     public static String nom;
-    public static HiloGrande h;
+    public static HiloGrande hg;
     Caida_libre c = null;
     FondoPanel fondo = new FondoPanel();
       
@@ -26,7 +26,7 @@ public class Caida_grande extends javax.swing.JDialog {
     }
     
     void llena_tabla(){
-        c = new Caida_libre(Integer.parseInt(txtAltura.getText()), 1000, Double.parseDouble(txtGravedad.getText()));
+        c = new Caida_libre(Integer.parseInt(txtAltura.getText()), 0, Double.parseDouble(txtGravedad.getText()));
         DefaultTableModel dt = (DefaultTableModel)tabla1.getModel();
         dt.setRowCount(0);
         for(int i=0; i<=c.tiempo(); i++){
@@ -76,10 +76,10 @@ public class Caida_grande extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         txtAltura = new javax.swing.JTextField();
         btnLimpiar = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel1.setText("CAIDA GRANDE");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
@@ -122,24 +122,28 @@ public class Caida_grande extends javax.swing.JDialog {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(velocidad)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(tiempo))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(velocidad))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(tiempo)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(8, 8, 8)
-                .addComponent(jLabel4)
-                .addGap(5, 5, 5)
-                .addComponent(velocidad)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tiempo)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(velocidad))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(tiempo))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         btnIniciar.setText("Iniciar Simulacion");
@@ -165,7 +169,7 @@ public class Caida_grande extends javax.swing.JDialog {
         tabla1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tabla1);
 
-        jLabel7.setText("Velocidad por cada segundo de trayectoria hasta abrir el ");
+        jLabel7.setText("Velocidad por cada segundo  ");
 
         jLabel2.setText("Bienvenido usuario:");
 
@@ -224,8 +228,6 @@ public class Caida_grande extends javax.swing.JDialog {
             }
         });
 
-        jLabel8.setText("paracaidas:");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -245,11 +247,10 @@ public class Caida_grande extends javax.swing.JDialog {
                             .addComponent(nombre)))
                     .addComponent(jLabel7)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
+                        .addGap(36, 36, 36)
                         .addComponent(btnIniciar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnLimpiar))
-                    .addComponent(jLabel8))
+                        .addGap(29, 29, 29)
+                        .addComponent(btnLimpiar)))
                 .addContainerGap(14, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -272,29 +273,28 @@ public class Caida_grande extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
+                        .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnIniciar)
                             .addComponent(btnLimpiar)))
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
-        int num=Integer.parseInt(txtAltura.getText());
+        try{
         if(!txtAltura.getText().equals("") && !txtGravedad.getText().equals("")){
+            int num=Integer.parseInt(txtAltura.getText());
             if(num<=5000 && num>=3000){
                 caida.setLocation(150, 0);
-                h = new HiloGrande(this, caida);
-                h.start();
+                hg = new HiloGrande(caida, this);
+                hg.start();
         
                 llena_tabla();
                 resultados();
@@ -303,6 +303,9 @@ public class Caida_grande extends javax.swing.JDialog {
             }        
         }else{
             JOptionPane.showMessageDialog(null, "Ingrese los datos requeridos", "Advertencia", JOptionPane.ERROR_MESSAGE);
+        }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Ingrese un valor entero en la altura", "Advertencia", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnIniciarActionPerformed
 
@@ -335,6 +338,7 @@ public class Caida_grande extends javax.swing.JDialog {
         velocidad.setText("");
         DefaultTableModel dt = (DefaultTableModel)tabla1.getModel();
         dt.setRowCount(0);
+        imagen1();
     }//GEN-LAST:event_btnLimpiarActionPerformed
     
     public static void main(String args[]) {
@@ -387,7 +391,6 @@ public class Caida_grande extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
